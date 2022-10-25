@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="profession" />
+        <module name="order-handling-info" />
+        <module name="vodka" />
+        <module name="location" />
+        <module name="order-accepted" />
+        <module name="order-type" />
+        <module name="employee" />
+        <module name="account" />
+        <module name="shelf" />
+        <module name="order" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="orderAccepted" target="17" />
+      <module name="orderHandlingInfo" target="17" />
+      <module name="orderType" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

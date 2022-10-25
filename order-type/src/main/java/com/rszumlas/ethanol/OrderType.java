@@ -5,25 +5,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity(name = "Vodka")
-@Table(name = "vodka")
-public class Vodka {
+@Entity(name = "OrderType")
+@Table(name = "order_type")
+public class OrderType {
 
     @Id
     @SequenceGenerator(
-            name = "vodka_sequence",
-            sequenceName = "vodka_sequence",
+            name = "order_type_sequence",
+            sequenceName = "order_type_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = SEQUENCE,
-            generator = "vodka_sequence"
+            generator = "order_type_sequence"
     )
     @Column(
             name = "id",
@@ -36,14 +38,12 @@ public class Vodka {
             nullable = false,
             columnDefinition = "TEXT"
     )
-    private String name;
+    private String type;
 
-    @Column(
-            name = "bottle_size",
-            nullable = false
+    @OneToMany(
+            mappedBy = "orderType",
+            fetch = FetchType.LAZY
     )
-    private int bottle_size;
-
-    private int voltage;
+    private List<Order> orders = new ArrayList<>();
 
 }
