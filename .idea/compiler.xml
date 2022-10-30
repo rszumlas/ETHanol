@@ -2,19 +2,22 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="profession" />
         <module name="order-handling-info" />
-        <module name="vodka" />
         <module name="location" />
         <module name="order-accepted" />
-        <module name="order-type" />
-        <module name="employee" />
+        <module name="vodka" />
         <module name="account" />
         <module name="shelf" />
+      </profile>
+      <profile name="Disabled">
+        <module name="profession" />
+        <module name="employee" />
+        <module name="order-type" />
         <module name="order" />
       </profile>
     </annotationProcessing>
