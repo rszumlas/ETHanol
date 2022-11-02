@@ -1,7 +1,6 @@
 package com.rszumlas.order;
 
 import com.rszumlas.clients.order.OrderRequest;
-import com.rszumlas.clients.shelf.ShelfClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final ShelfClient shelfClient;
 
     public void insertOrder(OrderRequest orderRequest) {
 
@@ -20,8 +18,6 @@ public class OrderService {
                 .crates(orderRequest.crates())
                 .build();
         orderRepository.save(order);
-
-        shelfClient.updateCratesAmount(orderRequest);
 
     }
 
