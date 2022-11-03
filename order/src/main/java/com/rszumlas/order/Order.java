@@ -31,7 +31,7 @@ public class Order {
             name = "id",
             updatable = false
     )
-    private Long id;
+    private Integer id;
 
     @ManyToOne(
             cascade = CascadeType.ALL,

@@ -9,12 +9,12 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>vodka</module>
     <module>shelf</module>
     <module>location</module>
     <module>profession</module>
     <module>employee</module>
     <module>account</module>
+    <module>vodka</module>
     <module>order</module>
     <module>order-type</module>
     <module>order-accepted</module>

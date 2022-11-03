@@ -30,7 +30,7 @@ public class Account {
             name = "id",
             updatable = false
     )
-    private Long id;
+    private Integer id;
 
     @Column(
             name = "email",

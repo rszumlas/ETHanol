@@ -29,7 +29,7 @@ public class Location {
             name = "id",
             updatable = false
     )
-    private Long id;
+    private Integer id;
 
     @Column(
             name = "state",

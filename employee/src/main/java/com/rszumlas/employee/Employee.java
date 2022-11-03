@@ -32,7 +32,7 @@ public class Employee {
             name = "id",
             updatable = false
     )
-    private Long id;
+    private Integer id;
 
     @Column(
             name = "first_name",

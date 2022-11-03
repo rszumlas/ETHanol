@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class Vodka {
             name = "id",
             updatable = false
     )
-    private Long id;
+    private Integer id;
 
     @Column(
             name = "name",

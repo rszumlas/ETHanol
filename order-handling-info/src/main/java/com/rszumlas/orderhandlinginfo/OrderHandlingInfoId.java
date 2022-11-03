@@ -15,9 +15,9 @@ import java.io.Serializable;
 public class OrderHandlingInfoId implements Serializable {
 
     @Column(name = "order_id")
-    private Long order_id;
+    private Integer order_id;
 
     @Column(name = "shelf_id")
-    private Long shelf_id;
+    private Integer shelf_id;
 
 }
