@@ -1,13 +1,10 @@
 package com.rszumlas.ordertype;
 
-import com.rszumlas.order.Order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -40,11 +37,5 @@ public class OrderType {
             columnDefinition = "TEXT"
     )
     private String type;
-
-    @OneToMany(
-            mappedBy = "orderType",
-            fetch = FetchType.LAZY
-    )
-    private List<Order> orders = new ArrayList<>();
 
 }

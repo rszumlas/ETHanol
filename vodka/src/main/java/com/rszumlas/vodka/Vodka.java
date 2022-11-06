@@ -1,13 +1,10 @@
 package com.rszumlas.vodka;
 
-import com.rszumlas.order.Order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -52,11 +49,5 @@ public class Vodka {
             nullable = false
     )
     private int voltage;
-
-    @OneToMany(
-            mappedBy = "vodka",
-            fetch = FetchType.LAZY
-    )
-    private List<Order> orders = new ArrayList<>();
 
 }

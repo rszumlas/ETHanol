@@ -1,14 +1,10 @@
 package com.rszumlas.profession;
 
-import com.rszumlas.employee.Employee;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -41,11 +37,5 @@ public class Profession {
             columnDefinition = "TEXT"
     )
     private String name;
-
-    @OneToMany(
-            mappedBy = "profession",
-            fetch = FetchType.EAGER
-    )
-    private List<Employee> employees = new ArrayList<>();
 
 }

@@ -11,15 +11,10 @@
 
     <artifactId>clients</artifactId>
     <dependencies>
+
         <dependency>
             <groupId>com.rszumlas.ethanol</groupId>
             <artifactId>order-type</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.rszumlas.ethanol</groupId>
-            <artifactId>vodka</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

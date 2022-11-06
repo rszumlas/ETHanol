@@ -17,9 +17,9 @@ import java.util.Optional;
 public interface ShelfClient {
 
     @GetMapping(path = "{vodka_id}")
-    Optional<Shelf> findByVodkaId(@PathVariable("vodka_id") Long vodka_id);
+    Optional<Shelf> findByVodkaId(@PathVariable("vodka_id") Integer vodka_id);
 
     @PatchMapping
-    void updateCratesAmount(@RequestBody OrderRequest orderRequest);
+    void updateCratesAmount(@PathVariable("order_id") Integer order_id);
 
 }

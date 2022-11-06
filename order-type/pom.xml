@@ -11,18 +11,7 @@
 
     <artifactId>order-type</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>com.rszumlas.ethanol</groupId>
-            <artifactId>order</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.rszumlas.ethanol</groupId>
-            <artifactId>order</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 
     <properties>

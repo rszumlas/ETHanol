@@ -7,20 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="order-handling-info" />
-        <module name="location" />
-        <module name="order-accepted" />
-        <module name="account" />
-      </profile>
-      <profile name="Disabled">
         <module name="profession" />
+        <module name="order-handling-info" />
         <module name="clients" />
         <module name="vodka" />
+        <module name="location" />
+        <module name="order-accepted" />
         <module name="employee" />
         <module name="order-type" />
+        <module name="account" />
         <module name="order" />
         <module name="shelf" />
       </profile>
+      <profile name="Disabled" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="orderAccepted" target="17" />
