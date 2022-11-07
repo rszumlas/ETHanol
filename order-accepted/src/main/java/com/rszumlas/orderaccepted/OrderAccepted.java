@@ -30,12 +30,6 @@ public class OrderAccepted {
     private Employee employee;
 
     @Column(
-            name = "eth",
-            nullable = false
-    )
-    private Double eth;
-
-    @Column(
             name = "created_at",
             nullable = false,
             columnDefinition = "TIMESTAMP WITHOUT TIMEZONE"

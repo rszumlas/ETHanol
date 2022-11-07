@@ -30,12 +30,6 @@ public class OrderHandlingInfo {
     private Shelf shelf;
 
     @Column(
-            name = "eth",
-            nullable = false
-    )
-    private Double eth;
-
-    @Column(
             name = "created_at",
             nullable = false,
             columnDefinition = "TIMESTAMP WITHOUT TIMEZONE"
