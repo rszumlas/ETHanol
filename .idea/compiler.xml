@@ -18,6 +18,7 @@
         <module name="account" />
         <module name="order" />
         <module name="shelf" />
+        <module name="order-done" />
       </profile>
       <profile name="Disabled" enabled="true" />
     </annotationProcessing>

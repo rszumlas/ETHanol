@@ -1,4 +1,4 @@
-package com.rszumlas.employee;
+package com.rszumlas.orderhandlinginfo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients(
         basePackages = "com.rszumlas.clients"
 )
-public class EmployeeApplication {
+public class OrderHandlingInfoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EmployeeApplication.class, args);
+        SpringApplication.run(OrderHandlingInfoApplication.class, args);
     }
 
 }
