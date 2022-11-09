@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="profession" />
         <module name="order-handling-info" />
         <module name="clients" />
         <module name="vodka" />
@@ -26,6 +25,7 @@
       <module name="orderAccepted" target="17" />
       <module name="orderHandlingInfo" target="17" />
       <module name="orderType" target="17" />
+      <module name="profession" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

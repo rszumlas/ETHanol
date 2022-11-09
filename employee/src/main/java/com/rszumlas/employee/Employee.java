@@ -1,8 +1,6 @@
 package com.rszumlas.employee;
 
 
-import com.rszumlas.location.Location;
-import com.rszumlas.profession.Profession;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,7 +30,7 @@ public class Employee {
             name = "id",
             updatable = false
     )
-    private Integer id;
+    private Long id;
 
     @Column(
             name = "first_name",
@@ -59,33 +57,5 @@ public class Employee {
             nullable = false
     )
     private int PESEL;
-
-    @ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
-    @JoinColumn(
-            name = "profession_id",
-            referencedColumnName = "id",
-            nullable = false,
-            foreignKey = @ForeignKey(
-                    name = "employee_profession_id_fk"
-            )
-    )
-    private Profession profession;
-
-    @OneToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
-    @JoinColumn(
-            name = "location_id",
-            referencedColumnName = "id",
-            nullable = false,
-            foreignKey = @ForeignKey(
-                    name = "employee_location_id_fk"
-            )
-    )
-    private Location location;
 
 }
