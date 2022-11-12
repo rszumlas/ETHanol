@@ -12,7 +12,6 @@
         <module name="vodka" />
         <module name="order-accepted" />
         <module name="employee" />
-        <module name="order-type" />
         <module name="account" />
         <module name="order" />
         <module name="shelf" />
@@ -22,6 +21,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="location" target="17" />
+      <module name="order-type" target="17" />
       <module name="orderAccepted" target="17" />
       <module name="orderHandlingInfo" target="17" />
       <module name="orderType" target="17" />
