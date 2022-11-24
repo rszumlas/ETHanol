@@ -2,7 +2,6 @@ package com.rszumlas.parcelaccepted;
 
 import com.rszumlas.employee.Employee;
 import com.rszumlas.parcel.Parcel;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

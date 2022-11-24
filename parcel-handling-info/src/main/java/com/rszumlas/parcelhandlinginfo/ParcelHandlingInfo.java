@@ -2,7 +2,6 @@ package com.rszumlas.parcelhandlinginfo;
 
 import com.rszumlas.parcel.Parcel;
 import com.rszumlas.shelf.Shelf;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
