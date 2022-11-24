@@ -2,11 +2,11 @@ package com.rszumlas.employee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication
-@EnableFeignClients(
-        basePackages = "com.rszumlas.clients"
+@SpringBootApplication(
+        scanBasePackages = {
+                "com.rszumlas.employee"
+        }
 )
 public class EmployeeApplication {
 

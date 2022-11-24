@@ -1,0 +1,17 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: parcel-handling-info
+  datasource:
+    password: password
+    url: jdbc:postgresql://localhost:5432/ethanol
+    username: rszumlas
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true

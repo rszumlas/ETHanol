@@ -1,31 +1,20 @@
 package com.rszumlas.employee;
 
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "Employee")
 @Table(name = "employee")
 public class Employee {
 
     @Id
-    @SequenceGenerator(
-            name = "order_type_sequence",
-            sequenceName = "order_type_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "order_type_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
             name = "id",
             updatable = false

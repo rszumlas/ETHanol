@@ -1,7 +1,6 @@
 package com.rszumlas.clients.shelf;
 
-import com.rszumlas.clients.order.OrderRequest;
-import com.rszumlas.shelf.Shelf;
+import com.rszumlas.clients.parcel.ParcelRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,10 +15,10 @@ import java.util.Optional;
 )
 public interface ShelfClient {
 
-    @GetMapping(path = "{vodka_id}")
-    Optional<Shelf> findByVodkaId(@PathVariable("vodka_id") Integer vodka_id);
+    @GetMapping(path = "api/v1/shelf/{shelf_id}")
+    Optional<ShelfRequest> findShelfByVodkaId(@PathVariable("shelf_id") Long vodka_id);
 
     @PatchMapping
-    void updateCratesAmount(@PathVariable("order_id") Integer order_id);
+    void updateCratesAmount(@RequestBody ParcelRequest parcelRequest);
 
 }

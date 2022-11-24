@@ -18,8 +18,8 @@ public class VodkaController {
 
     private final VodkaService vodkaService;
 
-    @GetMapping(path = "{id}")
-    public VodkaRequest findById(@PathVariable("id") Integer vodka_id) {
-        return  vodkaService.findById(vodka_id);
+    @GetMapping(path = "{vodka_id}")
+    public VodkaRequest findVodkaById(@PathVariable("vodka_id") Long vodka_id) {
+        return  vodkaService.findVodkaById(vodka_id);
     }
 }

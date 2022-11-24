@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 )
 public interface VodkaClient {
 
-    @GetMapping(path = "{id}")
-    VodkaRequest findById(@PathVariable("id") Long vodka_id);
+    @GetMapping(path = "api/v1/vodka/{vodka_id}")
+    VodkaRequest findVodkaById(@PathVariable("vodka_id") Long vodka_id);
 
 }

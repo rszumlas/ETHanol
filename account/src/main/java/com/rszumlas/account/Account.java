@@ -1,36 +1,26 @@
 package com.rszumlas.account;
 
 import com.rszumlas.employee.Employee;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Account")
 @Table(name = "account")
 public class Account {
 
     @Id
-    @SequenceGenerator(
-            name = "account_sequence",
-            sequenceName = "account_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "account_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
             name = "id",
             updatable = false
     )
-    private Integer id;
+    private Long id;
 
     @Column(
             name = "email",
@@ -46,10 +36,7 @@ public class Account {
     )
     private String password;
 
-    @OneToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
+    @OneToOne
     @JoinColumn(
             name = "employee_id",
             referencedColumnName = "id",

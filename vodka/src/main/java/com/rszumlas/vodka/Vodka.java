@@ -1,35 +1,27 @@
 package com.rszumlas.vodka;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.SEQUENCE;
+import static javax.persistence.GenerationType.AUTO;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "Vodka")
 @Table(name = "vodka")
 public class Vodka {
 
     @Id
-    @SequenceGenerator(
-            name = "vodka_sequence",
-            sequenceName = "vodka_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "vodka_sequence"
-    )
+    @GeneratedValue(strategy = AUTO)
     @Column(
             name = "id",
             updatable = false
     )
-    private Integer id;
+    private Long id;
 
     @Column(
             name = "name",

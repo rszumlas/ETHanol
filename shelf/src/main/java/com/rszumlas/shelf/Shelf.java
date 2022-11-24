@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,20 +15,12 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class Shelf {
 
     @Id
-    @SequenceGenerator(
-            name = "shelf_sequence",
-            sequenceName = "shelf_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "shelf_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
             name = "id",
             updatable = false
     )
-    private Integer id;
+    private Long id;
 
     @Column(
             name = "crates",
@@ -39,13 +29,12 @@ public class Shelf {
     private Integer crates;
 
     @Column(
-            name = "crates",
+            name = "max_crates",
             nullable = false
     )
     private Integer max_crates;
 
     @OneToOne(
-            cascade = CascadeType.PERSIST,
             fetch = FetchType.EAGER
     )
     @JoinColumn(

@@ -10,15 +10,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
 public interface ShelfRepository extends CrudRepository<Shelf, Long> {
 
-    @Query(value = "SELECT o FROM shelf s WHERE s.vodka_id = :vodka_id")
-    Optional<ShelfRequest> findByVodkaId(@Param("vodka_id") Integer vodka_id);
+    @Query(value = "SELECT s FROM Shelf s WHERE s.vodka = :vodka")
+    Optional<ShelfRequest> findShelfByVodkaId(@Param("vodka") Long vodka_id);
 
     @Modifying
-    @Query(value = "UPDATE shelf s SET s.crates = :crates + s.crates WHERE s.vodka_id = :vodka_id")
+    @Query(value = "UPDATE Shelf s SET s.crates = :crates + s.crates WHERE s.vodka = :vodka")
     void updateCratesAmount(@Param("crates") Integer crates,
-                            @Param("vodka_id") Long vodka_id);
+                            @Param("vodka") Long vodka_id);
 
 }

@@ -9,22 +9,24 @@
     <file url="file://$PROJECT_DIR$/employee/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/location/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/location/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/order-accepted/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/order-accepted/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/order-done/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/order-done/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/order-handling-info/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/order-handling-info/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order-type/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order-type/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/order/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/order/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orderAccepted/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orderAccepted/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orderHandlingInfo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orderHandlingInfo/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orderType/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orderType/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel-accepted/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel-accepted/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel-done/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel-done/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel-done2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel-done2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel-handling-info/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel-handling-info/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parcel/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/profession/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/profession/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shelf/src/main/java" charset="UTF-8" />
