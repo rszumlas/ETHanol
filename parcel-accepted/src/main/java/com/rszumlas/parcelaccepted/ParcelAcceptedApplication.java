@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(
         scanBasePackages = {
                 "com.rszumlas.parcel",
-                "com.rszumlas.employee",
-                "com.rszumlas.parceldone"
+                "com.rszumlas.parceldone",
+                "com.rszumlas.account"
         }
 )
 public class ParcelAcceptedApplication {

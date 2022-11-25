@@ -17,7 +17,7 @@ public class ParcelDoneId implements Serializable {
     @Column(name = "parcel_id")
     private Long parcel_id;
 
-    @Column(name = "employee_id")
-    private Long employee_id;
+    @Column(name = "account_id")
+    private Long account_id;
 
 }

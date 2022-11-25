@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
         scanBasePackages = {
                 "com.rszumlas.parceldone",
                 "com.rszumlas.parcel",
-                "com.rszumlas.employee"
+                "com.rszumlas.account"
         }
 )
 @EnableFeignClients(
