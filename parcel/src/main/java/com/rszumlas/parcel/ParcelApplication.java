@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
         }
 )
 @EnableFeignClients(
-        basePackages = "com.rszumlas.clients"
+        basePackages = "com.rszumlas.clients.vodka"
 )
 public class ParcelApplication {
 
