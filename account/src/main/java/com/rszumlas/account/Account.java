@@ -11,7 +11,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Account")
-@Table(name = "account")
+@Table(
+        name = "account",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "unique_email_constraint",
+                        columnNames = {"email"}
+                )
+        })
 public class Account {
 
     @Id
@@ -25,7 +32,8 @@ public class Account {
     @Column(
             name = "email",
             nullable = false,
-            columnDefinition = "TEXT"
+            columnDefinition = "TEXT",
+            unique = true
     )
     private String email;
 
