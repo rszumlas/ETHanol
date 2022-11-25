@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Optional;
 
 @FeignClient(
+        contextId = "shelfContextId",
         name = "shelf",
         url = "${clients.shelf.url}"
 )
@@ -18,7 +19,7 @@ public interface ShelfClient {
     @GetMapping(path = "api/v1/shelf/{shelf_id}")
     Optional<ShelfRequest> findShelfByVodkaId(@PathVariable("shelf_id") Long vodka_id);
 
-    @PatchMapping
-    void updateCratesAmount(@RequestBody ParcelRequest parcelRequest);
+    @PatchMapping(path = "api/v1/shelf/{parcel_id}")
+    void updateCratesAmount(@PathVariable("parcel_id") Long parcel_id);
 
 }

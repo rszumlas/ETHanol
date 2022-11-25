@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
+        contextId = "vodkaContextId",
         name = "vodka",
         url = "${clients.vodka.url}"
 )

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(
-        contextId = "parcelClient",
+        contextId = "parcelContextId",
         name = "parcel",
         url = "${clients.parcel.url}"
 )
