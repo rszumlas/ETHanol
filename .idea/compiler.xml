@@ -12,7 +12,6 @@
         <module name="clients" />
         <module name="vodka" />
         <module name="parcel-accepted" />
-        <module name="employee" />
         <module name="account" />
         <module name="shelf" />
         <module name="parcel-done" />
@@ -20,6 +19,7 @@
       <profile name="Disabled" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="employee" target="17" />
       <module name="location" target="17" />
       <module name="order-type" target="17" />
       <module name="orderAccepted" target="17" />

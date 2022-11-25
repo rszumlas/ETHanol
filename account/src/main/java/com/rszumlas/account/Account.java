@@ -1,6 +1,5 @@
 package com.rszumlas.account;
 
-import com.rszumlas.employee.Employee;
 import lombok.*;
 
 import javax.persistence.*;
@@ -44,15 +43,10 @@ public class Account {
     )
     private String password;
 
-    @OneToOne
-    @JoinColumn(
-            name = "employee_id",
-            referencedColumnName = "id",
-            nullable = false,
-            foreignKey = @ForeignKey(
-                    name = "account_employee_id_fk"
-            )
+    @Column(
+            name = "eth_total",
+            nullable = false
     )
-    private Employee employee;
+    private Double eth_total;
 
 }

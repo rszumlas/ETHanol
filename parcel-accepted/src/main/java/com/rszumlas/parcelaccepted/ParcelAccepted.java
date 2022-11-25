@@ -1,6 +1,6 @@
 package com.rszumlas.parcelaccepted;
 
-import com.rszumlas.employee.Employee;
+import com.rszumlas.account.Account;
 import com.rszumlas.parcel.Parcel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,9 +25,9 @@ public class ParcelAccepted {
     private Parcel parcel;
 
     @ManyToOne
-    @MapsId("employee_id")
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @MapsId("account_id")
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     @Column(
             name = "created_at",
