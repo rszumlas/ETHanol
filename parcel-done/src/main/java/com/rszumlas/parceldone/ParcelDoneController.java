@@ -4,10 +4,9 @@ import com.rszumlas.clients.parceldone.ParcelDoneRequest;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Slf4j
 @Setter
@@ -21,6 +20,11 @@ public class ParcelDoneController {
     @PutMapping
     public void insertParcelDone(@RequestBody ParcelDoneRequest parcelDoneRequest) {
         parcelDoneService.insertParcelDone(parcelDoneRequest);
+    }
+
+    @GetMapping(path = "{account_id}")
+    Optional<ParcelDoneRequest> findParcelDoneByAccountId(@PathVariable("account_id") Long account_id) {
+        return parcelDoneService.findParcelDoneByAccountId(account_id);
     }
 
 }

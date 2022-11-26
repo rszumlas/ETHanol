@@ -13,7 +13,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 )
 @EnableFeignClients(
         basePackages = {
-                "com.rszumlas.clients.shelf"
+                "com.rszumlas.clients.shelf",
+                "com.rszumlas.clients.account"
         }
 )
 public class ParcelDoneApplication {
