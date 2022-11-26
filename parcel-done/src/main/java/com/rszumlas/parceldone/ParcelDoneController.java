@@ -17,7 +17,7 @@ public class ParcelDoneController {
 
     private final ParcelDoneService parcelDoneService;
 
-    @PutMapping
+    @PostMapping
     public void insertParcelDone(@RequestBody ParcelDoneRequest parcelDoneRequest) {
         parcelDoneService.insertParcelDone(parcelDoneRequest);
     }

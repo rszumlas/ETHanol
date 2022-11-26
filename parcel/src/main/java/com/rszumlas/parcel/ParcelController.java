@@ -18,7 +18,7 @@ public class ParcelController {
         return parcelService.findParcelById(parcel_id);
     }
 
-    @PutMapping
+    @PostMapping
     public void insertParcel(@RequestBody ParcelRequest parcelRequest) {
         parcelService.insertParcel(parcelRequest);
     }

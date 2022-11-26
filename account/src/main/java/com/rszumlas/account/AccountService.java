@@ -16,7 +16,7 @@ public class AccountService {
 
     public void updateEthTotal(Long account_id) {
         Double eth_total = parcelDoneClient.findParcelDoneByAccountId(account_id)
-                .get().eth_earned();
+                .orElseThrow().eth_earned();
         accountRepository.updateEthTotal(account_id, eth_total);
     }
 

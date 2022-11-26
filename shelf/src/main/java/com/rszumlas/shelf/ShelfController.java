@@ -23,7 +23,7 @@ public class ShelfController {
         return shelfService.findShelfByVodkaId(vodka_id);
     }
 
-    @PatchMapping(path = "{parcel_id}")
+    @PutMapping(path = "{parcel_id}")
     public void updateCratesAmount(@PathVariable Long parcel_id) {
         shelfService.updateCratesAmount(parcel_id);
     }
