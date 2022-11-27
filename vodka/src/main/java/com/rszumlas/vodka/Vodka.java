@@ -31,15 +31,22 @@ public class Vodka {
     private String name;
 
     @Column(
+            name = "flavour",
+            columnDefinition = "TEXT"
+    )
+    private String flavour;
+
+    @Column(
             name = "bottle_size",
             nullable = false
     )
-    private int bottle_size;
+    private Integer bottle_size;
 
     @Column(
             name = "voltage",
-            nullable = false
+            nullable = false,
+            columnDefinition = "NUMERIC(3,1)"
     )
-    private int voltage;
+    private Double voltage;
 
 }

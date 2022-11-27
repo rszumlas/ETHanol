@@ -4,16 +4,17 @@ spring:
   application:
     name: shelf
   datasource:
-    password: 'password'
+    password: password
     url: jdbc:postgresql://localhost:5432/ethanol
-    username: 'rszumlas'
+    username: rszumlas
+  sql:
+    init:
+      mode: always
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-#        jdbc:
-#          batch-size: 5
+    format_sql: true
     show-sql: true

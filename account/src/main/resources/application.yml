@@ -7,6 +7,9 @@ spring:
     password: password
     url: jdbc:postgresql://localhost:5432/ethanol
     username: rszumlas
+  sql:
+    init:
+      mode: always
   jpa:
     hibernate:
       ddl-auto: update
