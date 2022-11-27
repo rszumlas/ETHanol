@@ -15,12 +15,12 @@ public class ShelfService {
     private final ShelfRepository shelfRepository;
     private final ParcelClient parcelClient;
 
-    public Optional<ShelfRequest> findShelfByVodkaId(Long vodka_id) {
-        return shelfRepository.findShelfByVodkaId(vodka_id);
+    public Long findShelIdfByVodkaId(Long vodka_id) {
+        return shelfRepository.findShelIdfByVodkaId(vodka_id);
     }
 
     public void updateCratesAmount(Long parcel_id) {
-        ParcelRequest parcelRequest = parcelClient.findParcelById(parcel_id);
+        ParcelRequest parcelRequest = parcelClient.findParcelById(parcel_id).orElseThrow();
         shelfRepository.updateCratesAmount(parcelRequest.crates(), parcelRequest.vodka_id());
     }
 

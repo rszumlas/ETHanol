@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public interface ShelfRepository extends CrudRepository<Shelf, Long> {
 
-    @Query(value = "SELECT s FROM Shelf s WHERE s.vodka = :vodka")
-    Optional<ShelfRequest> findShelfByVodkaId(@Param("vodka") Long vodka_id);
+    @Query(value = "SELECT s.id FROM Shelf s WHERE s.vodka = :vodka")
+    Long findShelIdfByVodkaId(@Param("vodka") Long vodka_id);
 
     @Modifying
     @Query(value = "UPDATE Shelf s SET s.crates = :crates + s.crates WHERE s.vodka = :vodka")

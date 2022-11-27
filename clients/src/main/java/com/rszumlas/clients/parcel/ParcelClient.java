@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Optional;
+
 @FeignClient(
         contextId = "parcelContextId",
         name = "parcel",
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface ParcelClient {
 
     @GetMapping(path = "api/v1/parcel/{parcel_id}")
-    ParcelRequest findParcelById(@PathVariable("parcel_id") Long parcel_id);
+    Optional<ParcelRequest> findParcelById(@PathVariable("parcel_id") Long parcel_id);
 
     @PostMapping
     void insertParcel(@RequestBody ParcelRequest parcelRequest);
