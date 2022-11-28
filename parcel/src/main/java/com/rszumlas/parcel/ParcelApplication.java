@@ -2,6 +2,7 @@ package com.rszumlas.parcel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication(
@@ -17,6 +18,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
                 "com.rszumlas.clients.parcelHandlingInfo"
         }
 )
+@EnableEurekaClient
 public class ParcelApplication {
 
     public static void main(String[] args) {

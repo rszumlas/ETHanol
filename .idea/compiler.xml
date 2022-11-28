@@ -12,6 +12,7 @@
         <module name="clients" />
         <module name="vodka" />
         <module name="parcel-accepted" />
+        <module name="eureka-server" />
         <module name="account" />
         <module name="shelf" />
         <module name="parcel-done" />
