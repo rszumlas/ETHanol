@@ -15,7 +15,4 @@ public class ParcelHandlingInfoId implements Serializable {
     @Column(name = "parcel_id")
     private Long parcel_id;
 
-    @Column(name = "shelf_id")
-    private Long shelf_id;
-
 }

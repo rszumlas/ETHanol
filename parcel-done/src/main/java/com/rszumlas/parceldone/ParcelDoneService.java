@@ -20,17 +20,13 @@ public class ParcelDoneService {
     public void insertParcelDone(ParcelDoneRequest parcelDoneRequest) {
         saveParcelDone(parcelDoneRequest);
         shelfClient.updateCratesAmount(parcelDoneRequest.parcel_id());
-        accountClient.updateEthTotal(parcelDoneRequest.account_id());
+        accountClient.updateEthTotal(parcelDoneRequest.account_id(), parcelDoneRequest.eth_earned());
     }
 
     private void saveParcelDone(ParcelDoneRequest parcelDoneRequest) {
         ModelMapper modelMapper = new ModelMapper();
         ParcelDone parcelDone = modelMapper.map(parcelDoneRequest, ParcelDone.class);
         parcelDoneRepository.save(parcelDone);
-    }
-
-    public Optional<ParcelDoneRequest> findParcelDoneByAccountId(Long account_id) {
-        return parcelDoneRepository.findParcelDoneByAccountId(account_id);
     }
 
 }

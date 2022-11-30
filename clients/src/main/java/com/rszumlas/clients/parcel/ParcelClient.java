@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface ParcelClient {
 
     @GetMapping(path = "api/v1/parcel/{parcel_id}")
-    Optional<ParcelRequest> findParcelById(@PathVariable("parcel_id") Long parcel_id);
+    ParcelRequest findParcelById(@PathVariable("parcel_id") Long parcel_id);
 
     @PostMapping
     void insertParcel(@RequestBody ParcelRequest parcelRequest);

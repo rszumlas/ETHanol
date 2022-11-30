@@ -17,9 +17,10 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    @PutMapping(path = "{account_id}")
-    public void updateEthTotal(@PathVariable("account_id") Long account_id) {
-        accountService.updateEthTotal(account_id);
+    @PutMapping(path = "{account_id}/{eth_earned}")
+    public void updateEthTotal(@PathVariable("account_id") Long account_id,
+                               @PathVariable("eth_earned") Double eth_earned) {
+        accountService.updateEthTotal(account_id, eth_earned);
     }
 
 

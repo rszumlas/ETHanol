@@ -2,15 +2,15 @@ package com.rszumlas.parcelhandlinginfo;
 
 import com.rszumlas.parcel.Parcel;
 import com.rszumlas.shelf.Shelf;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "ParcelHandlingInfo")
 @Table(name = "parcel_handling_info")
@@ -24,9 +24,14 @@ public class ParcelHandlingInfo {
     @JoinColumn(name = "parcel_id")
     private Parcel parcel;
 
-    @OneToOne
-    @MapsId("shelf_id")
-    @JoinColumn(name = "shelf_id")
+    @ManyToOne
+    @JoinColumn(
+            name = "shelf_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(
+                    name = "phi_shelf_id_fk"
+            )
+    )
     private Shelf shelf;
 
     @Column(

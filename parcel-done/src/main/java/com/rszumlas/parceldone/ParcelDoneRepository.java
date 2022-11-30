@@ -9,8 +9,4 @@ import java.util.Optional;
 
 public interface ParcelDoneRepository extends CrudRepository<ParcelDone, Long> {
 
-    @Query(value = "SELECT p FROM ParcelDone p WHERE p.account = :account")
-    Optional<ParcelDoneRequest> findParcelDoneByAccountId(@Param("account") Long account_id);
-
-
 }

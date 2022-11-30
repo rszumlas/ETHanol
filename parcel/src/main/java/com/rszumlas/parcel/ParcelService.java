@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -23,22 +22,20 @@ public class ParcelService {
     private final ShelfClient shelfClient;
 
 
-    public Optional<ParcelRequest> findParcelById(Long parcel_id) {
+    public Parcel findParcelById(Long parcel_id) {
         return parcelRepository.findParcelById(parcel_id);
     }
 
     public void insertParcel(ParcelRequest parcelRequest) {
-        Parcel parcel = castRequestToParcel(parcelRequest);
-        parcelRepository.save(parcel);
+        Parcel parcel = castRequestToParcelEntity(parcelRequest);
+        parcelRepository.saveAndFlush(parcel);
         insertParcelHandlingInfo(parcelRequest, parcel);
     }
 
-    private Parcel castRequestToParcel(ParcelRequest parcelRequest) {
-
+    private Parcel castRequestToParcelEntity(ParcelRequest parcelRequest) {
         VodkaRequest vodkaRequest = vodkaClient.findVodkaById(parcelRequest.vodka_id());
-
         return Parcel.builder()
-                .delivery_type("import")
+                .delivery_type(parcelRequest.delivery_type())
                 .vodka(Vodka.builder()
                         .id(parcelRequest.vodka_id())
                         .name(vodkaRequest.name())

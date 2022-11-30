@@ -15,7 +15,14 @@ import javax.persistence.*;
 public class Parcel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "parcel_id_sequence",
+            sequenceName = "parcel_id_sequence"
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "parcel_id_sequence"
+    )
     @Column(
             name = "id",
             updatable = false

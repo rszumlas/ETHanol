@@ -22,9 +22,4 @@ public class ParcelDoneController {
         parcelDoneService.insertParcelDone(parcelDoneRequest);
     }
 
-    @GetMapping(path = "{account_id}")
-    Optional<ParcelDoneRequest> findParcelDoneByAccountId(@PathVariable("account_id") Long account_id) {
-        return parcelDoneService.findParcelDoneByAccountId(account_id);
-    }
-
 }

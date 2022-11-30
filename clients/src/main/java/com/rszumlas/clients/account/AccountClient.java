@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 )
 public interface AccountClient {
 
-    @PutMapping(path = "api/v1/account/{account_id}")
-    void updateEthTotal(@PathVariable("account_id") Long account_id);
+    @PutMapping(path = "api/v1/account/{account_id}/{eth_earned}")
+    void updateEthTotal(@PathVariable("account_id") Long account_id,
+                        @PathVariable("eth_earned") Double eth_earned);
 
 }

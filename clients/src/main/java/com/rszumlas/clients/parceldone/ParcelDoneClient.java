@@ -13,8 +13,4 @@ import java.util.Optional;
 )
 public interface ParcelDoneClient {
 
-    @GetMapping(path = "api/v1/parcel-done/{account_id}")
-    Optional<ParcelDoneRequest> findParcelDoneByAccountId(@PathVariable("account_id") Long account_id);
-
-
 }

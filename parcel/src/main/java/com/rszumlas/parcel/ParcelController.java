@@ -16,8 +16,13 @@ public class ParcelController {
     private final ParcelService parcelService;
 
     @GetMapping(path = "{parcel_id}")
-    public Optional<ParcelRequest> findParcelById(@PathVariable("parcel_id") Long parcel_id) {
-        return parcelService.findParcelById(parcel_id);
+    public ParcelRequest findParcelById(@PathVariable("parcel_id") Long parcel_id) {
+        Parcel parcel = parcelService.findParcelById(parcel_id);
+        return new ParcelRequest(
+                parcel.getDelivery_type(),
+                parcel.getCrates(),
+                parcel.getVodka().getId()
+        );
     }
 
     @PostMapping

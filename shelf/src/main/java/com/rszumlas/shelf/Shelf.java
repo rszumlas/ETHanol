@@ -1,14 +1,14 @@
 package com.rszumlas.shelf;
 
 import com.rszumlas.vodka.Vodka;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Shelf")
 @Table(name = "shelf")

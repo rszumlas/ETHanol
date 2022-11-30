@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 )
 public interface ParcelHandlingInfoClient {
 
-    @PostMapping
+    @PostMapping(path = "api/v1/parcel-handling-info")
     void insertParcelHandlingInfo(@RequestBody ParcelHandlingInfoRequest parcelHandlingInfoRequest);
 
 
