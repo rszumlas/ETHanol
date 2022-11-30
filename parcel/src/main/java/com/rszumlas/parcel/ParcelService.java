@@ -21,11 +21,12 @@ public class ParcelService {
     private final VodkaClient vodkaClient;
     private final ShelfClient shelfClient;
 
-
+    //  findParcelById
     public Parcel findParcelById(Long parcel_id) {
         return parcelRepository.findParcelById(parcel_id);
     }
 
+    //  insertParcel
     public void insertParcel(ParcelRequest parcelRequest) {
         Parcel parcel = castRequestToParcelEntity(parcelRequest);
         parcelRepository.saveAndFlush(parcel);

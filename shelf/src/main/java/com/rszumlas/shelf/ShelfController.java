@@ -35,7 +35,7 @@ public class ShelfController {
         );
     }
 
-    @PutMapping(path = "{parcel_id}")
+    @PutMapping(path = "update-crates/{parcel_id}")
     public void updateCratesAmount(@PathVariable Long parcel_id) {
         shelfService.updateCratesAmount(parcel_id);
     }

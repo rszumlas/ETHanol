@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Time;
 
 @Getter
 @Setter
@@ -32,9 +31,9 @@ public class ParcelDone {
     @Column(
             name = "delivery_time",
             nullable = false,
-            columnDefinition = "INTERVAL"
+            columnDefinition = "TEXT"
     )
-    private Time delivery_time;
+    private String delivery_time;
 
     @Column(
             name = "eth_earned",
@@ -43,9 +42,9 @@ public class ParcelDone {
     private Double eth_earned;
 
     @Column(
-            name = "finished",
+            name = "is_finished",
             nullable = false
     )
-    private Boolean finished;
+    private Boolean is_finished;
 
 }
