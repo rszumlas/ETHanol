@@ -15,17 +15,11 @@ import javax.persistence.*;
 public class Parcel {
 
     @Id
-    @SequenceGenerator(
-            name = "parcel_id_sequence",
-            sequenceName = "parcel_id_sequence"
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "parcel_id_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
             name = "id",
-            updatable = false
+            updatable = false,
+            columnDefinition = "SERIAL"
     )
     private Long id;
 

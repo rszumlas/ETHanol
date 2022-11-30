@@ -24,7 +24,6 @@ public class ParcelController {
                 parcel.getVodka().getId()
         );
     }
-
     @PostMapping
     public void insertParcel(@RequestBody ParcelRequest parcelRequest) {
         parcelService.insertParcel(parcelRequest);

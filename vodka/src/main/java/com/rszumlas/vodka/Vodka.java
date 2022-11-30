@@ -16,10 +16,11 @@ import static javax.persistence.GenerationType.AUTO;
 public class Vodka {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
             name = "id",
-            updatable = false
+            updatable = false,
+            columnDefinition = "SERIAL"
     )
     private Long id;
 

@@ -24,7 +24,8 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
             name = "id",
-            updatable = false
+            updatable = false,
+            columnDefinition = "SERIAL"
     )
     private Long id;
 
