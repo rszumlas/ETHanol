@@ -44,7 +44,4 @@ Wanting to take up one of them, there are a few easy steps to follow:
   ```
   docker compose up -d
   ```
-
-### Show your support
-Leave a ⭐ if you like this project
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
