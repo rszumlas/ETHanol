@@ -4,7 +4,7 @@
 <br>
 
 <a align="center">
-Backend of future Kotlin mobile app for vodka warehouse employees. Keeps track on every incoming and outgoing order. <br>
+Backend of future Kotlin mobile app for vodka warehouse employees. Keeps track on incoming and outgoing orders. <br>
 Every forklift worker can access a client app that displays recent parcels that came into warehouse.
 </a>
 <br><br>
@@ -23,7 +23,7 @@ Wanting to take up one of them, there are a few easy steps to follow:
 2. Do your work and complete it. There should be displayed your destination shelf to help you.
 3. When job done, mark order as finished/unfinished. You'll be paid in Ethereum based on delivery time.
 
-### Built With
+### Tech stack
 
 * Spring Boot
 * Spring Data JPA
