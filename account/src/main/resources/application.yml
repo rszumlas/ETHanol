@@ -7,7 +7,7 @@ spring:
   datasource:
     password: password
     url: jdbc:postgresql://localhost:5432/ethanol
-    username: postgres
+    username: rszumlas
   sql:
     init:
       mode: always

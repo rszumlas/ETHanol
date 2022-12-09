@@ -6,7 +6,7 @@ spring:
   datasource:
     password: password
     url: jdbc:postgresql://localhost:5432/ethanol
-    username: postgres
+    username: rszumlas
   jpa:
     hibernate:
       ddl-auto: update
