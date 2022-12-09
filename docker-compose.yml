@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: rszumlas
       POSTGRES_PASSWORD: password
-      POSTGRES_DB=postgres
+      POSTGRES_DB: postgres
     volumes:
       - postgres:/data/postgres
     ports:
@@ -17,10 +17,11 @@ services:
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
-#    environment:
-#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-#      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      MASTER_PASSWORD_REQUIRED: False
     volumes:
       - pgadmin:/var/lib/pgadmin
     ports:
@@ -28,116 +29,6 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-
-#  account:
-#    image: account:latest
-#    container_name: account
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  employee:
-#    image: employee:latest
-#    container_name: employee
-#    ports:
-#      - "8081:8081"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  location:
-#    image: location:latest
-#    container_name: location
-#    ports:
-#      - "8082:8082"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  order:
-#    image: order:latest
-#    container_name: order
-#    ports:
-#      - "8083:8083"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  order-accepted:
-#    image: order-accepted:latest
-#    container_name: order-accepted
-#    ports:
-#      - "8084:8084"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  order-handling-info:
-#    image: order-handling-info:latest
-#    container_name: order-handling-info
-#    ports:
-#      - "8085:8085"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  order-type:
-#    image: order-type:latest
-#    container_name: order-type
-#    ports:
-#      - "8086:8086"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  profession:
-#    image: profession:latest
-#    container_name: profession
-#    ports:
-#      - "8087:8087"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  shelf:
-#    image: shelf:latest
-#    container_name: shelf
-#    ports:
-#      - "8088:8088"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#
-#  vodka:
-#    image: vodka:latest
-#    container_name: vodka
-#    ports:
-#      - "8089:8089"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
 
 networks:
   postgres:
