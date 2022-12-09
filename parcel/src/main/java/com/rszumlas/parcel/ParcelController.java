@@ -21,7 +21,8 @@ public class ParcelController {
         return new ParcelRequest(
                 parcel.getDelivery_type(),
                 parcel.getCrates(),
-                parcel.getVodka().getId()
+                parcel.getVodka().getId(),
+                parcel.getCreated_at()
         );
     }
     @PostMapping
