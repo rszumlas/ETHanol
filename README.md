@@ -34,8 +34,26 @@ Wanting to take up one of them, there are a few easy steps to follow:
   ```
   docker compose up -d
   ```
-  
-### Tech stack
+<br/>
+
+## Endpoints
+After running a service, you can access it's endpoint documentation with
+  ```
+  http://localhost:enter-service-port/swagger-ui.html
+  ```
+### Ports
+
+* account: 8080
+* parcel: 8081
+* parcel-accepted: 8082
+* parcel-done: 8083
+* parcel-handling-info: 8084
+* shelf: 8085
+* vodka: 8086
+
+<br/>
+
+## Tech stack
 
 * Spring Boot
 * Spring Data JPA
