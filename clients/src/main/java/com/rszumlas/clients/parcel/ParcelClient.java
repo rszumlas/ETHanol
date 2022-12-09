@@ -18,7 +18,7 @@ public interface ParcelClient {
     @GetMapping(path = "api/v1/parcel/{parcel_id}")
     ParcelRequest findParcelById(@PathVariable("parcel_id") Long parcel_id);
 
-    @PostMapping
+    @PostMapping(path = "api/v1/parcel")
     void insertParcel(@RequestBody ParcelRequest parcelRequest);
 
 }

@@ -17,8 +17,8 @@ public interface ParcelDoneRepository extends CrudRepository<ParcelDone, Long> {
     @Transactional
     @Query(value = "" +
             "INSERT INTO parcel_done " +
-            "(parcel_id, account_id, delivery_time, eth_earned, is_finished) " +
-            "VALUES (:#{#pd.parcel_id}, :#{#pd.account_id}, :#{#pd.delivery_time}, :#{#pd.eth_earned}, :#{#pd.is_finished})",
+            "(parcel_id, account_id, delivery_time_seconds, is_finished) " +
+            "VALUES (:#{#pd.parcel_id}, :#{#pd.account_id}, :#{#pd.delivery_time_seconds} :#{#pd.is_finished})",
             nativeQuery = true
     )
     void insertParcelDone(@Param("pd") ParcelDoneRequest pd);

@@ -4,6 +4,7 @@ import com.rszumlas.vodka.Vodka;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -46,5 +47,12 @@ public class Parcel {
             nullable = false
     )
     private Integer crates;
+
+    @Column(
+            name = "created_at",
+            nullable = false,
+            columnDefinition = "TIMESTAMP WITHOUT TIME ZONE"
+    )
+    private LocalDateTime created_at;
 
 }

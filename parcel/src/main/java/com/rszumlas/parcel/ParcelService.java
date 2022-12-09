@@ -10,8 +10,6 @@ import com.rszumlas.vodka.Vodka;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 @AllArgsConstructor
 public class ParcelService {
@@ -30,7 +28,7 @@ public class ParcelService {
     public void insertParcel(ParcelRequest parcelRequest) {
         Parcel parcel = castRequestToParcelEntity(parcelRequest);
         parcelRepository.saveAndFlush(parcel);
-        insertParcelHandlingInfo(parcelRequest, parcel);
+        insertParcelHandlingInfo(parcel);
     }
 
     private Parcel castRequestToParcelEntity(ParcelRequest parcelRequest) {
@@ -44,14 +42,15 @@ public class ParcelService {
                         .voltage(vodkaRequest.voltage())
                         .build())
                 .crates(parcelRequest.crates())
+                .created_at(parcelRequest.created_at())
                 .build();
     }
 
-    private void insertParcelHandlingInfo(ParcelRequest parcelRequest, Parcel parcel) {
+    private void insertParcelHandlingInfo(Parcel parcel) {
         ParcelHandlingInfoRequest parcelHandlingInfoRequest = new ParcelHandlingInfoRequest(
                 parcel.getId(),
-                shelfClient.findShelfIdByVodkaId(parcelRequest.vodka_id()),
-                LocalDateTime.now()
+                shelfClient.findShelfIdByVodkaId(parcel.getVodka().getId()),
+                parcel.getCreated_at()
         );
         parcelHandlingInfoClient.insertParcelHandlingInfo(parcelHandlingInfoRequest);
     }

@@ -29,11 +29,10 @@ public class ParcelDone {
     private Account account;
 
     @Column(
-            name = "delivery_time",
-            nullable = false,
-            columnDefinition = "TEXT"
+            name = "delivery_time_seconds",
+            nullable = false
     )
-    private String delivery_time;
+    private Integer delivery_time_seconds;
 
     @Column(
             name = "eth_earned",
