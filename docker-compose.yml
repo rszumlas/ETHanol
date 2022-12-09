@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: rszumlas
       POSTGRES_PASSWORD: password
-      PGDATA: /data/postgres
+      POSTGRES_DB=postgres
     volumes:
       - postgres:/data/postgres
     ports:
@@ -17,10 +17,10 @@ services:
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+#      PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
       - pgadmin:/var/lib/pgadmin
     ports:
