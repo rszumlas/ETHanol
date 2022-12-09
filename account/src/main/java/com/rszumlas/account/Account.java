@@ -46,7 +46,8 @@ public class Account {
 
     @Column(
             name = "eth_total",
-            nullable = false
+            nullable = false,
+            columnDefinition = "NUMERIC(5,4)"
     )
     private Double eth_total;
 
