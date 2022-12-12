@@ -24,13 +24,13 @@ public class ParcelDoneService {
         accountClient.updateEthTotal(parcelDoneRequest.account_id(), calculateEarnedEth(parcelDoneRequest.delivery_time_seconds()));
     }
 
-    private Float calculateEarnedEth(Integer delivery_time_seconds) {
+    private Double calculateEarnedEth(Integer delivery_time_seconds) {
         float plnPerHour = 19.7f;
         int ethPriceInUsd = 1300;
         double usdPerSecond = 19.7/4.5 / 3600;
         double ethPerSecond = usdPerSecond/ethPriceInUsd;
         BigDecimal earnedEth = BigDecimal.valueOf(usdPerSecond * delivery_time_seconds).setScale(4, RoundingMode.DOWN);
-        return earnedEth.floatValue();
+        return earnedEth.doubleValue();
     }
 
 }
