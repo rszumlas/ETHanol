@@ -21,7 +21,7 @@ public class ShelfController {
     private final ShelfService shelfService;
 
     @GetMapping(path = "vodka-id/{vodka_id}")
-    public Long findShelIdfByVodkaId(@PathVariable("vodka_id") Long vodka_id) {
+    public Long findShelfIdByVodkaId(@PathVariable("vodka_id") Long vodka_id) {
         return shelfService.findShelIdfByVodkaId(vodka_id);
     }
 

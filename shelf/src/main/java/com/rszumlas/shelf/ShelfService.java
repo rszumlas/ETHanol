@@ -16,7 +16,7 @@ public class ShelfService {
     private final ParcelClient parcelClient;
 
     public Long findShelIdfByVodkaId(Long vodka_id) {
-        return shelfRepository.findShelIdfByVodkaId(vodka_id);
+        return shelfRepository.findShelfIdByVodkaId(vodka_id);
     }
 
     public Shelf findShelfById(Long shelf_id) {

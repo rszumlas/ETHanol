@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ShelfRepository extends CrudRepository<Shelf, Long> {
 
     @Query(value = "SELECT s.id FROM Shelf s WHERE s.vodka.id = :vodka_id")
-    Long findShelIdfByVodkaId(@Param("vodka_id") Long vodka_id);
+    Long findShelfIdByVodkaId(@Param("vodka_id") Long vodka_id);
 
     @Modifying
     @Transactional
