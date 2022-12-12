@@ -1,14 +1,13 @@
 package com.rszumlas.account;
 
 import com.rszumlas.clients.account.AccountRequest;
-import com.rszumlas.clients.parcelhandlinginfo.ParcelHandlingInfoRequest;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface AccountRepository extends CrudRepository<Account, Long> {
+public interface AccountRepository extends JpaRepository<Account, Long> {
 
     @Modifying
     @Transactional
@@ -35,5 +34,13 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
             nativeQuery = true
     )
     boolean isEmailTaken(@Param("email") String email);
+
+    @Query(value = "" +
+            "SELECT EXISTS " +
+            "(SELECT 1 FROM account " +
+            "WHERE email = :email AND password = :password)",
+            nativeQuery = true)
+    boolean doesEmailAndPasswordExist(@Param("email") String email,
+                                      @Param("password") String password);
 
 }

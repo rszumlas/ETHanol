@@ -3,6 +3,7 @@ package com.rszumlas.account;
 import com.rszumlas.account.exception.ApiRequestException;
 import com.rszumlas.clients.account.AccountRequest;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,6 +28,10 @@ public class AccountService {
 
     public void updateEthTotal(Long account_id, Double eth_earned) {
         accountRepository.updateEthTotal(account_id, eth_earned);
+    }
+
+    public boolean doesEmailAndPasswordExist(String email, String password) {
+        return accountRepository.doesEmailAndPasswordExist(email, password);
     }
 
 }
