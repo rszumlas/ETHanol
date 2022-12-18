@@ -43,13 +43,13 @@ After running a service, you can access it's endpoint documentation with
   ```
 ### Ports
 
-* account: 8080
-* parcel: 8081
-* parcel-accepted: 8082
-* parcel-done: 8083
-* parcel-handling-info: 8084
-* shelf: 8085
-* vodka: 8086
+* Account: 8080
+* Parcel: 8081
+* Parcel Accepted: 8082
+* Parcel Done: 8083
+* Parcel Handling Info: 8084
+* Shelf: 8085
+* Vodka: 8086
 
 <br/>
 
