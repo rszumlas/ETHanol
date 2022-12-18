@@ -55,8 +55,7 @@ After running a service, you can access it's endpoint documentation with
 
 ## Tech stack
 
-* Spring Boot
-* Spring Data JPA
-* Spring Cloud
+* Spring Boot (Hibernate/Spring Data JPA, Spring Cloud)
+* Kafka
 * PostgreSQL
 * Docker
