@@ -1,7 +1,6 @@
-package com.rszumlas.account.kafka;
+package com.rszumlas.shelf.kafka;
 
-import com.rszumlas.account.AccountService;
-import com.rszumlas.clients.account.AccountRequest;
+import com.rszumlas.shelf.ShelfService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,16 +11,16 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class KafkaListeners {
 
-    private final AccountService accountService;
+    private final ShelfService shelfService;
     public static final Logger LOGGER = LoggerFactory.getLogger(KafkaListeners.class);
 
     @KafkaListener(
-            topics = "account",
-            groupId = "accountGroup"
+            topics = "shelf",
+            groupId = "shelfGroup"
     )
-    void listener(AccountRequest data) {
+    void listener(Long data) {
         LOGGER.info(String.format("Message received -> %s", data));
-        accountService.updateEthTotal(data);
+        shelfService.updateCratesAmount(data);
     }
 
 }

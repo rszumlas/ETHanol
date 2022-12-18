@@ -26,12 +26,6 @@ public class AccountController {
         accountService.insertAccount(accountRequest);
     }
 
-    @PutMapping(path = "{account_id}/{eth_earned}")
-    public void updateEthTotal(@PathVariable("account_id") Long account_id,
-                               @PathVariable("eth_earned") Double eth_earned) {
-        accountService.updateEthTotal(account_id, eth_earned);
-    }
-
     @Operation(summary = "Does email and passowrd exist",
             description = "Checks if account with given email and password exists")
     @ApiResponses(value = {

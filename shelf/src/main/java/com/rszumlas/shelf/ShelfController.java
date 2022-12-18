@@ -1,15 +1,13 @@
 package com.rszumlas.shelf;
 
-import com.rszumlas.clients.parcel.ParcelRequest;
 import com.rszumlas.clients.shelf.ShelfRequest;
-import com.rszumlas.vodka.Vodka;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @Setter
@@ -33,11 +31,6 @@ public class ShelfController {
                 shelf.getMax_crates(),
                 shelf.getVodka().getId()
         );
-    }
-
-    @PutMapping(path = "update-crates/{parcel_id}")
-    public void updateCratesAmount(@PathVariable Long parcel_id) {
-        shelfService.updateCratesAmount(parcel_id);
     }
 
 }

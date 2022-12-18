@@ -35,12 +35,6 @@ public class ParcelDone {
     private Integer delivery_time_seconds;
 
     @Column(
-            name = "eth_earned",
-            nullable = false
-    )
-    private Double eth_earned;
-
-    @Column(
             name = "is_finished",
             nullable = false
     )

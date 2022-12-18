@@ -1,29 +1,45 @@
 package com.rszumlas.parceldone;
 
-import com.rszumlas.amqp.RabbitMQMessageProducer;
 import com.rszumlas.clients.account.AccountClient;
+import com.rszumlas.clients.account.AccountRequest;
 import com.rszumlas.clients.parceldone.ParcelDoneRequest;
 import com.rszumlas.clients.shelf.ShelfClient;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class ParcelDoneService {
 
     private final ParcelDoneRepository parcelDoneRepository;
-    private final ShelfClient shelfClient;
-    private final AccountClient accountClient;
-    private final RabbitMQMessageProducer rabbitMQMessageProducer;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+    public static final Logger LOGGER = LoggerFactory.getLogger(ParcelDoneService.class);
 
     public void insertParcelDone(ParcelDoneRequest parcelDoneRequest) {
+
         parcelDoneRepository.insertParcelDone(parcelDoneRequest);
-        shelfClient.updateCratesAmount(parcelDoneRequest.parcel_id());
-        accountClient.updateEthTotal(parcelDoneRequest.account_id(), calculateEarnedEth(parcelDoneRequest.delivery_time_seconds()));
+
+        //  Update amount of crates in shelf entity
+        kafkaTemplate.send("shelf", parcelDoneRequest.parcel_id());
+
+        //  Update amount of eth in account entity
+        sendAccountTopicMessage(parcelDoneRequest);
+    }
+
+    private void sendAccountTopicMessage(ParcelDoneRequest parcelDoneRequest) {
+        AccountRequest accountRequest = AccountRequest.builder()
+                .id(parcelDoneRequest.account_id())
+                .eth_total(calculateEarnedEth(parcelDoneRequest.delivery_time_seconds()))
+                .build();
+
+        LOGGER.info(String.format("Message sent -> %s", accountRequest));
+        kafkaTemplate.send("account", accountRequest);
     }
 
     private Double calculateEarnedEth(Integer delivery_time_seconds) {

@@ -26,8 +26,8 @@ public class AccountService {
         accountRepository.insertAccount(accountRequest);
     }
 
-    public void updateEthTotal(Long account_id, Double eth_earned) {
-        accountRepository.updateEthTotal(account_id, eth_earned);
+    public void updateEthTotal(AccountRequest accountRequest) {
+        accountRepository.updateEthTotal(accountRequest.id(), accountRequest.eth_total());
     }
 
     public boolean doesEmailAndPasswordExist(String email, String password) {

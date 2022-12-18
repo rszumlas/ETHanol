@@ -19,6 +19,15 @@ spring:
     format_sql: true
     show-sql: true
     defer-datasource-initialization: true
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      group-id: shelfGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
 
 eureka:
   client:

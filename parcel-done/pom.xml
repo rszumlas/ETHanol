@@ -36,6 +36,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.rszumlas.ethanol</groupId>
             <artifactId>parcel</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -46,10 +50,6 @@
             <artifactId>account</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
 
