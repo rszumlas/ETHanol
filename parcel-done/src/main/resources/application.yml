@@ -17,6 +17,8 @@ spring:
     show-sql: true
   main:
     allow-bean-definition-overriding: true
+  kafka:
+    bootstrap-servers: localhost:29092
 
 eureka:
   client:
