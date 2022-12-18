@@ -30,7 +30,7 @@ Process flow:
   ```sh
   git clone https://github.com/rszumlas/ETHanol.git
   ```
-2. Compose remaining docker images (PostgreSQL, pgAdmin4)
+2. Compose remaining docker images
   ```
   docker compose up -d
   ```
