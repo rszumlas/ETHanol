@@ -19,4 +19,10 @@ public interface ParcelDoneRepository extends CrudRepository<ParcelDone, Long> {
     )
     void insertParcelDone(@Param("pd") ParcelDoneRequest pd);
 
+    @Query(value = "" +
+            "SELECT pd.is_finished " +
+            "FROM ParcelDone pd " +
+            "WHERE pd.id = :id")
+    Boolean checkIfFinished(@Param("id") Long id);
+
 }

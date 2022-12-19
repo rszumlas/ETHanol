@@ -4,10 +4,7 @@ import com.rszumlas.clients.parceldone.ParcelDoneRequest;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Setter
@@ -21,6 +18,11 @@ public class ParcelDoneController {
     @PostMapping
     public void insertParcelDone(@RequestBody ParcelDoneRequest parcelDoneRequest) {
         parcelDoneService.insertParcelDone(parcelDoneRequest);
+    }
+
+    @GetMapping(path = "api/v1/parcel-done/{parcel_id}")
+    public Boolean checkIfFinished(@PathVariable("parcel_id") Long parcel_id) {
+        return parcelDoneService.checkIfFinished(parcel_id);
     }
 
 }

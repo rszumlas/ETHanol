@@ -20,6 +20,10 @@ public class ParcelDoneService {
     private final KafkaTemplate<String, AccountRequest> accountRequestKafkaTemplate;
     public static final Logger LOGGER = LoggerFactory.getLogger(ParcelDoneService.class);
 
+    public Boolean checkIfFinished(Long parcel_id) {
+        return parcelDoneRepository.checkIfFinished(parcel_id);
+    }
+
     public void insertParcelDone(ParcelDoneRequest parcelDoneRequest) {
 
         parcelDoneRepository.insertParcelDone(parcelDoneRequest);
@@ -42,7 +46,6 @@ public class ParcelDoneService {
                 .id(parcelDoneRequest.account_id())
                 .eth_total(calculateEarnedEth(parcelDoneRequest.delivery_time_seconds()))
                 .build();
-
         LOGGER.info(String.format("Message sent -> %s", accountRequest));
         accountRequestKafkaTemplate.send("account", accountRequest);
     }
