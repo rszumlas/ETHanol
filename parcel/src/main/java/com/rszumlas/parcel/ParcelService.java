@@ -1,13 +1,13 @@
 package com.rszumlas.parcel;
 
 import com.rszumlas.clients.parcel.ParcelRequest;
-import com.rszumlas.clients.parcelhandlinginfo.ParcelHandlingInfoClient;
 import com.rszumlas.clients.parcelhandlinginfo.ParcelHandlingInfoRequest;
 import com.rszumlas.clients.shelf.ShelfClient;
-import com.rszumlas.clients.vodka.VodkaClient;
-import com.rszumlas.clients.vodka.VodkaRequest;
-import com.rszumlas.vodka.Vodka;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,9 +15,10 @@ import org.springframework.stereotype.Service;
 public class ParcelService {
 
     private final ParcelRepository parcelRepository;
-    private final ParcelHandlingInfoClient parcelHandlingInfoClient;
-    private final VodkaClient vodkaClient;
     private final ShelfClient shelfClient;
+    private final KafkaTemplate<String, ParcelHandlingInfoRequest> kafkaTemplate;
+    public static final Logger LOGGER = LoggerFactory.getLogger(ParcelService.class);
+
 
     //  findParcelById
     public Parcel findParcelById(Long parcel_id) {
@@ -26,33 +27,21 @@ public class ParcelService {
 
     //  insertParcel
     public void insertParcel(ParcelRequest parcelRequest) {
-        Parcel parcel = castRequestToParcelEntity(parcelRequest);
+        ModelMapper modelMapper = new ModelMapper();
+        Parcel parcel = modelMapper.map(parcelRequest, Parcel.class);
         parcelRepository.saveAndFlush(parcel);
-        insertParcelHandlingInfo(parcel);
+        sendParcelHandlingInfoMessage(parcel);
     }
 
-    private Parcel castRequestToParcelEntity(ParcelRequest parcelRequest) {
-        VodkaRequest vodkaRequest = vodkaClient.findVodkaById(parcelRequest.vodka_id());
-        return Parcel.builder()
-                .delivery_type(parcelRequest.delivery_type())
-                .vodka(Vodka.builder()
-                        .id(parcelRequest.vodka_id())
-                        .name(vodkaRequest.name())
-                        .bottle_size(vodkaRequest.bottle_size())
-                        .voltage(vodkaRequest.voltage())
-                        .build())
-                .crates(parcelRequest.crates())
-                .created_at(parcelRequest.created_at())
-                .build();
-    }
-
-    private void insertParcelHandlingInfo(Parcel parcel) {
+    private void sendParcelHandlingInfoMessage(Parcel parcel) {
         ParcelHandlingInfoRequest parcelHandlingInfoRequest = new ParcelHandlingInfoRequest(
                 parcel.getId(),
                 shelfClient.findShelfIdByVodkaId(parcel.getVodka().getId()),
+                parcel.getCrates(),
                 parcel.getCreated_at()
         );
-        parcelHandlingInfoClient.insertParcelHandlingInfo(parcelHandlingInfoRequest);
+        LOGGER.info(String.format("Message sent -> %s", parcelHandlingInfoRequest));
+        kafkaTemplate.send("parcelHandlingInfo", parcelHandlingInfoRequest);
     }
 
 }

@@ -4,8 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.AUTO;
-
 @Getter
 @Setter
 @Builder
@@ -26,7 +24,6 @@ public class Vodka {
 
     @Column(
             name = "name",
-            nullable = false,
             columnDefinition = "TEXT"
     )
     private String name;
@@ -38,14 +35,12 @@ public class Vodka {
     private String flavour;
 
     @Column(
-            name = "bottle_size",
-            nullable = false
+            name = "bottle_size"
     )
     private Integer bottle_size;
 
     @Column(
             name = "voltage",
-            nullable = false,
             columnDefinition = "NUMERIC(3,1)"
     )
     private Double voltage;

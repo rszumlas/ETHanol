@@ -13,8 +13,8 @@ public interface ParcelHandlingInfoRepository extends PagingAndSortingRepository
     @Transactional
     @Query(value = "" +
             "INSERT INTO parcel_handling_info " +
-            "(parcel_id, shelf_id, created_at) " +
-            "VALUES (:#{#phi.parcel_id}, :#{#phi.shelf_id}, :#{#phi.created_at})",
+            "(parcel_id, shelf_id, crates, created_at) " +
+            "VALUES (:#{#phi.parcel_id}, :#{#phi.shelf_id}, :#{#phi.crates}, :#{#phi.created_at})",
             nativeQuery = true
     )
     void insertParcelHandlingInfo(@Param("phi") ParcelHandlingInfoRequest phi);

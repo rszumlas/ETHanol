@@ -35,8 +35,12 @@ public class ParcelHandlingInfo {
     private Shelf shelf;
 
     @Column(
+            name = "crates"
+    )
+    private Integer crates;
+
+    @Column(
             name = "created_at",
-            nullable = false,
             columnDefinition = "TIMESTAMP WITHOUT TIME ZONE"
     )
     private LocalDateTime created_at;
