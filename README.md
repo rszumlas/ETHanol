@@ -30,7 +30,7 @@ Process flow:
   ```sh
   git clone https://github.com/rszumlas/ETHanol.git
   ```
-2. Compose remaining docker images (PostgreSQL, pgAdmin4)
+2. Compose remaining docker images
   ```
   docker compose up -d
   ```
@@ -55,8 +55,7 @@ After running a service, you can access it's endpoint documentation with
 
 ## Tech stack
 
-* Spring Boot
-* Spring Data JPA
-* Spring Cloud
+* Spring Boot (Hibernate/Spring Data JPA, Spring Cloud)
+* Kafka
 * PostgreSQL
 * Docker
