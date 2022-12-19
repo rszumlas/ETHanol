@@ -1,9 +1,7 @@
 package com.rszumlas.parceldone;
 
-import com.rszumlas.clients.account.AccountClient;
 import com.rszumlas.clients.account.AccountRequest;
 import com.rszumlas.clients.parceldone.ParcelDoneRequest;
-import com.rszumlas.clients.shelf.ShelfClient;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +16,8 @@ import java.math.RoundingMode;
 public class ParcelDoneService {
 
     private final ParcelDoneRepository parcelDoneRepository;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final KafkaTemplate<String, Long> longKafkaTemplate;
+    private final KafkaTemplate<String, AccountRequest> accountRequestKafkaTemplate;
     public static final Logger LOGGER = LoggerFactory.getLogger(ParcelDoneService.class);
 
     public void insertParcelDone(ParcelDoneRequest parcelDoneRequest) {
@@ -26,10 +25,16 @@ public class ParcelDoneService {
         parcelDoneRepository.insertParcelDone(parcelDoneRequest);
 
         //  Update amount of crates in shelf entity
-        kafkaTemplate.send("shelf", parcelDoneRequest.parcel_id());
+        sendShelfTopicMessage(parcelDoneRequest);
 
         //  Update amount of eth in account entity
         sendAccountTopicMessage(parcelDoneRequest);
+    }
+
+    private void sendShelfTopicMessage(ParcelDoneRequest parcelDoneRequest) {
+        Long parcel_id = parcelDoneRequest.parcel_id();
+        LOGGER.info(String.format("Message sent -> %s", parcel_id));
+        longKafkaTemplate.send("shelf", parcel_id);
     }
 
     private void sendAccountTopicMessage(ParcelDoneRequest parcelDoneRequest) {
@@ -39,7 +44,7 @@ public class ParcelDoneService {
                 .build();
 
         LOGGER.info(String.format("Message sent -> %s", accountRequest));
-        kafkaTemplate.send("account", accountRequest);
+        accountRequestKafkaTemplate.send("account", accountRequest);
     }
 
     private Double calculateEarnedEth(Integer delivery_time_seconds) {
