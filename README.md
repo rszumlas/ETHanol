@@ -15,7 +15,7 @@ Every forklift worker can access a client app that displays recent parcels that 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-ETHanol is a REST API created to handle requests from mobile app and apply business logic to it (e.g calculate Ethereum amount based on delivery time and completion, that needs to be paid to every employee for their work.).
+ETHanol is a multi-module Maven REST API based on microservice architecture. Created to handle requests from mobile app and apply business logic to it (e.g calculate Ethereum amount based on delivery time and completion, that needs to be paid to every employee for their work).
 As a forklift driver you can accept parcels that show up on app.
 <br><br>
 Process flow:
@@ -41,6 +41,7 @@ After running a service, you can access it's endpoint documentation with
   ```
   http://localhost:enter-service-port/swagger-ui.html
   ```
+  
 ### Ports
 
 * Account: 8080
