@@ -13,7 +13,7 @@ public interface ShelfRepository extends CrudRepository<Shelf, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Shelf s SET s.crates = s.crates - :crates WHERE s.vodka.id = :vodka_id")
+    @Query(value = "UPDATE Shelf s SET s.crates = s.crates + :crates WHERE s.vodka.id = :vodka_id")
     void increaseCratesAmount(@Param("crates") Integer crates,
                               @Param("vodka_id") Long vodka_id);
     @Modifying

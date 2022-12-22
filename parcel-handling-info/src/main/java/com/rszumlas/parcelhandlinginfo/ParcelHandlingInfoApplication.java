@@ -9,7 +9,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
         scanBasePackages = {
                 "com.rszumlas.parcel",
                 "com.rszumlas.shelf",
-                "com.rszumlas.parcelhandlinginfo"
+                "com.rszumlas.parcelhandlinginfo",
+                "com.rszumlas.kafka"
         }
 )
 @EnableEurekaClient

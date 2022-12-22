@@ -13,9 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 )
 @EnableFeignClients(
         basePackages = {
-                "com.rszumlas.clients.vodka",
-                "com.rszumlas.clients.shelf",
-                "com.rszumlas.clients.parcelHandlingInfo"
+                "com.rszumlas.clients.shelf"
         }
 )
 @EnableEurekaClient

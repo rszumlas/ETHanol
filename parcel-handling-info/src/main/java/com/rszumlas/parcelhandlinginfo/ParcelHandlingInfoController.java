@@ -18,9 +18,4 @@ public class ParcelHandlingInfoController {
 
     private ParcelHandlingInfoService parcelHandlingInfoService;
 
-    @PostMapping
-    void insertParcelHandlingInfo(@RequestBody ParcelHandlingInfoRequest parcelHandlingInfoRequest) {
-        parcelHandlingInfoService.insertParcelHandlingInfo(parcelHandlingInfoRequest);
-    }
-
 }

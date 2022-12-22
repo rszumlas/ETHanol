@@ -26,6 +26,8 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
+    topic:
+      name: parcel_topic
 
 eureka:
   client:
