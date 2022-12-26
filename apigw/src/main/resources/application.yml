@@ -1,0 +1,45 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: account
+          uri: lb://ACCOUNT
+          predicates:
+            - Path=/api/v1/account/**
+        - id: parcel
+          uri: lb://PARCEL
+          predicates:
+            - Path=/api/v1/parcel/**
+        - id: parcel-accepted
+          uri: lb://PARCEL-ACCEPTED
+          predicates:
+            - Path=/api/v1/parcel-accepted/**
+        - id: parcel-done
+          uri: lb://PARCEL-DONE
+          predicates:
+            - Path=/api/v1/parcel-done/**
+        - id: parcel-handling-info
+          uri: lb://PARCEL-HANDLING-INFO
+          predicates:
+            - Path=/api/v1/parcel-handling-info/**
+        - id: shelf
+          uri: lb://SHELF
+          predicates:
+            - Path=/api/v1/shelf/**
+        - id: vodka
+          uri: lb://VODKA
+          predicates:
+            - Path=/api/v1/vodka/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: true
