@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Shelf")

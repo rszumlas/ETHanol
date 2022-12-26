@@ -2,6 +2,7 @@ package com.rszumlas.account;
 
 import com.rszumlas.account.exception.ApiRequestException;
 import com.rszumlas.clients.account.AccountRequest;
+import com.rszumlas.clients.parcel.ParcelRequest;
 import com.rszumlas.clients.parceldone.ParcelDoneRequest;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -22,11 +23,11 @@ public class AccountService {
 
     // insertAccount
     public void insertAccount(AccountRequest accountRequest) {
-        throwIfEmailNotValid(accountRequest);
+        throwIfEmailNotValidOrTaken(accountRequest);
         accountRepository.insertAccount(accountRequest);
     }
 
-    private void throwIfEmailNotValid(AccountRequest accountRequest) {
+    private void throwIfEmailNotValidOrTaken(AccountRequest accountRequest) {
         if (!emailValidator.test(accountRequest.email())) {
             throw new ApiRequestException(accountRequest.email() + " is not valid");
         }
@@ -37,9 +38,12 @@ public class AccountService {
 
     // updateEthTotal
     public void updateEthTotal(ParcelDoneRequest parcelDoneRequest) {
-        Double eth_earned = calculateEarnedEth(parcelDoneRequest.delivery_time_seconds());
-        LOGGER.info(String.format("Eth earned: %s", eth_earned));
-        accountRepository.updateEthTotal(parcelDoneRequest.account_id(), eth_earned);
+        Boolean is_finished = parcelDoneRequest.is_finished();
+        if (is_finished) {
+            Double eth_earned = calculateEarnedEth(parcelDoneRequest.delivery_time_seconds());
+            LOGGER.info(String.format("Increase eth amount by %s", eth_earned));
+            accountRepository.updateEthTotal(parcelDoneRequest.account_id(), eth_earned);
+        }
     }
 
     private Double calculateEarnedEth(Integer delivery_time_seconds) {

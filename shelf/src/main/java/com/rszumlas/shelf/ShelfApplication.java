@@ -8,7 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(
         scanBasePackages = {
                 "com.rszumlas.shelf",
-                "com.rszumlas.vodka"
+                "com.rszumlas.vodka",
+                "com.rszumlas.parcel"
         }
 )
 @EnableFeignClients(

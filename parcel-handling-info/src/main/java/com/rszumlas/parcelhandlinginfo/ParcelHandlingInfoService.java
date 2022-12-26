@@ -1,28 +1,49 @@
 package com.rszumlas.parcelhandlinginfo;
 
 import com.rszumlas.clients.parcelhandlinginfo.ParcelHandlingInfoRequest;
-import com.rszumlas.clients.shelf.ShelfClient;
 import com.rszumlas.parcel.Parcel;
+import com.rszumlas.shelf.Shelf;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ParcelHandlingInfoService {
 
     private final ParcelHandlingInfoRepository parcelHandlingInfoRepository;
-    private final ShelfClient shelfClient;
+    private ParcelHandlingInfoRequest parcelHandlingInfoRequest = ParcelHandlingInfoRequest.builder().build();
 
-    public void insertParcelHandlingInfo(Parcel parcel) {
+    // getShelfId
+    private Long getShelfId(Shelf shelf) {
+        return shelf.getId();
+    }
 
-        ParcelHandlingInfoRequest parcelHandlingInfoRequest = new ParcelHandlingInfoRequest(
-                parcel.getId(),
-                shelfClient.findShelfIdByVodkaId(parcel.getVodka().getId()),
-                parcel.getCrates(),
-                parcel.getCreated_at()
-        );
+    // insertParcelHandlingInfo
+    public void provideParcelEvent(Parcel event) {
+        parcelHandlingInfoRequest.setParcel_id(event.getId());
+        parcelHandlingInfoRequest.setCrates(event.getCrates());
+        parcelHandlingInfoRequest.setCreated_at(event.getCreated_at());
+    }
 
-        parcelHandlingInfoRepository.insertParcelHandlingInfo(parcelHandlingInfoRequest);
+    public void provideShelfEventAndInsertPHI(Shelf event) {
+        parcelHandlingInfoRequest.setShelf_id(event.getId());
+        insertParcelHandlingInfo(parcelHandlingInfoRequest);
+    }
+
+    private void insertParcelHandlingInfo(ParcelHandlingInfoRequest phiRequest) {
+        if (ObjectUtils.allNotNull(phiRequest)) {
+            parcelHandlingInfoRepository.insertParcelHandlingInfo(phiRequest);
+            resetParcelHandlingInfoRequest(phiRequest);
+        }
+    }
+
+    private void resetParcelHandlingInfoRequest(ParcelHandlingInfoRequest phiRequest) {
+        phiRequest.setParcel_id(null);
+        phiRequest.setShelf_id(null);
+        phiRequest.setCrates(null);
+        phiRequest.setCreated_at(null);
     }
 
 }

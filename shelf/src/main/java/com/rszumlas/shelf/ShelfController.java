@@ -18,11 +18,6 @@ public class ShelfController {
 
     private final ShelfService shelfService;
 
-    @GetMapping(path = "vodka-id/{vodka_id}")
-    public Long findShelfIdByVodkaId(@PathVariable("vodka_id") Long vodka_id) {
-        return shelfService.findShelIdfByVodkaId(vodka_id);
-    }
-
     @GetMapping(path = "shelf-id/{shelf_id}")
     public ShelfRequest findShelfById(@PathVariable("shelf_id") Long shelf_id) {
         Shelf shelf = shelfService.findShelfById(shelf_id);

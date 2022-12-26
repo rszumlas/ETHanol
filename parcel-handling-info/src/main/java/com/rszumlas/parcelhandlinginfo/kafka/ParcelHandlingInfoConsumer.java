@@ -2,6 +2,7 @@ package com.rszumlas.parcelhandlinginfo.kafka;
 
 import com.rszumlas.parcel.Parcel;
 import com.rszumlas.parcelhandlinginfo.ParcelHandlingInfoService;
+import com.rszumlas.shelf.Shelf;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,16 @@ public class ParcelHandlingInfoConsumer {
     )
     public void consume(Parcel event) {
         LOGGER.info(String.format("Event received -> %s", event));
-        parcelHandlingInfoService.insertParcelHandlingInfo(event);
+        parcelHandlingInfoService.provideParcelEvent(event);
+    }
+
+    @KafkaListener(
+            topics = "shelf_topic",
+            groupId = "parcelHandlingInfoGroup"
+    )
+    public void consume(Shelf event) {
+        LOGGER.info(String.format("Event received -> %s", event));
+        parcelHandlingInfoService.provideShelfEventAndInsertPHI(event);
     }
 
 }

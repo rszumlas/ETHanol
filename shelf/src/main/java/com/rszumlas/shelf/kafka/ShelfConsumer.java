@@ -1,6 +1,7 @@
 package com.rszumlas.shelf.kafka;
 
 import com.rszumlas.clients.parceldone.ParcelDoneRequest;
+import com.rszumlas.parcel.Parcel;
 import com.rszumlas.shelf.ShelfService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -14,6 +15,15 @@ public class ShelfConsumer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(ShelfConsumer.class);
     private final ShelfService shelfService;
+
+    @KafkaListener(
+            topics = "parcel_topic",
+            groupId = "shelfGroup"
+    )
+    public void consume(Parcel event) {
+        LOGGER.info(String.format("Event received -> %s", event));
+        shelfService.findShelfByVodkaId(event.getVodka().getId());
+    }
 
     @KafkaListener(
             topics = "parcel_done_request_topic",

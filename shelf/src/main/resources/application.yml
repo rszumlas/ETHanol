@@ -19,6 +19,8 @@ spring:
     format_sql: true
     show-sql: true
     defer-datasource-initialization: true
+  main:
+    allow-bean-definition-overriding: true
   kafka:
     bootstrap-servers: localhost:29092
     consumer:
@@ -28,8 +30,11 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     topic:
-      name: parcel_done_request_topic
+      name: shelf_topic
 
 eureka:
   client:

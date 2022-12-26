@@ -3,6 +3,7 @@ package com.rszumlas.shelf;
 import com.rszumlas.clients.parcel.ParcelClient;
 import com.rszumlas.clients.parcel.ParcelRequest;
 import com.rszumlas.clients.parceldone.ParcelDoneRequest;
+import com.rszumlas.shelf.kafka.ShelfProducer;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,18 +13,20 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ShelfService {
 
+    public static final Logger LOGGER = LoggerFactory.getLogger(ShelfProducer.class);
     private final ShelfRepository shelfRepository;
     private final ParcelClient parcelClient;
-    public static final Logger LOGGER = LoggerFactory.getLogger(ShelfService.class);
-
-    // findShelIdfByVodkaId
-    public Long findShelIdfByVodkaId(Long vodka_id) {
-        return shelfRepository.findShelfIdByVodkaId(vodka_id);
-    }
+    private final ShelfProducer shelfProducer;
 
     // findShelfById
     public Shelf findShelfById(Long shelf_id) {
         return shelfRepository.findById(shelf_id).orElseThrow();
+    }
+
+    // findShelfByVodkaId
+    public void findShelfByVodkaId(Long vodka_id) {
+        Shelf shelf = shelfRepository.findShelfByVodkaId(vodka_id);
+        shelfProducer.sendMessage(shelf);
     }
 
     // updateCratesAmount
