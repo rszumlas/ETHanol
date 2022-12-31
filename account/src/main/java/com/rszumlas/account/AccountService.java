@@ -1,8 +1,8 @@
 package com.rszumlas.account;
 
 import com.rszumlas.account.exception.ApiRequestException;
+import com.rszumlas.account.util.EmailValidator;
 import com.rszumlas.clients.account.AccountRequest;
-import com.rszumlas.clients.parcel.ParcelRequest;
 import com.rszumlas.clients.parceldone.ParcelDoneRequest;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;

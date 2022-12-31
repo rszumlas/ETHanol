@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
     @Modifying
@@ -18,7 +20,9 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     )
     void insertAccount(@Param("a") AccountRequest a);
 
-    @Modifying
+    Optional<Account> findByEmail(String email);
+
+    @Modifying(clearAutomatically = true)
     @Transactional
     @Query(value = "" +
             "UPDATE Account a " +

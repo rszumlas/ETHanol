@@ -1,4 +1,4 @@
-package com.rszumlas.account;
+package com.rszumlas.account.util;
 
 import org.springframework.stereotype.Component;
 
