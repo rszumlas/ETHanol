@@ -6,9 +6,8 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity(name = "Vodka")
 @Table(name = "vodka")
 public class Vodka {
@@ -45,4 +44,7 @@ public class Vodka {
     )
     private Double voltage;
 
+    public Vodka(Long vodka_id) {
+
+    }
 }

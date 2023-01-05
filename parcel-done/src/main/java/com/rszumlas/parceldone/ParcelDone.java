@@ -4,6 +4,7 @@ import com.rszumlas.account.Account;
 import com.rszumlas.parcel.Parcel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Entity(name = "ParcelDone")
 @Table(name = "parcel_done")
 public class ParcelDone {

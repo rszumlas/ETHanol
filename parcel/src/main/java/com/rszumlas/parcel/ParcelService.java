@@ -14,19 +14,17 @@ public class ParcelService {
     private final ParcelProducer parcelProducer;
 
     public Parcel findParcelById(Long parcel_id) {
-        return parcelRepository.findParcelById(parcel_id);
+        return parcelRepository.findById(parcel_id).orElseThrow();
     }
 
     public void insertParcel(ParcelRequest parcelRequest) {
-
-        Parcel parcel = Parcel.builder()
-                .delivery_type(parcelRequest.delivery_type())
-                .vodka(Vodka.builder()
-                        .id(parcelRequest.vodka_id())
-                        .build())
-                .crates(parcelRequest.crates())
-                .created_at(parcelRequest.created_at())
-                .build();
+        Parcel parcel = new Parcel(
+                null,
+                parcelRequest.delivery_type(),
+                new Vodka(parcelRequest.vodka_id()),
+                parcelRequest.crates(),
+                parcelRequest.created_at()
+        );
         parcelRepository.saveAndFlush(parcel);
         parcelProducer.sendMessage(parcel);
     }

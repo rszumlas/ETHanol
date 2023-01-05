@@ -20,19 +20,18 @@ public class AccountService {
     private final EmailValidator emailValidator;
     public static final Logger LOGGER = LoggerFactory.getLogger(AccountService.class);
 
-
     // insertAccount
     public void insertAccount(AccountRequest accountRequest) {
-        throwIfEmailNotValidOrTaken(accountRequest);
+        throwIfEmailNotValidOrTaken(accountRequest.email());
         accountRepository.insertAccount(accountRequest);
     }
 
-    private void throwIfEmailNotValidOrTaken(AccountRequest accountRequest) {
-        if (!emailValidator.test(accountRequest.email())) {
-            throw new ApiRequestException(accountRequest.email() + " is not valid");
+    protected void throwIfEmailNotValidOrTaken(String email) {
+        if (!emailValidator.test(email)) {
+            throw new ApiRequestException(email + " is not valid");
         }
-        if (accountRepository.isEmailTaken(accountRequest.email())) {
-            throw new ApiRequestException(accountRequest.email() + " is taken");
+        if (accountRepository.isEmailTaken(email)) {
+            throw new ApiRequestException(email + " is taken");
         }
     }
 
@@ -46,7 +45,7 @@ public class AccountService {
         }
     }
 
-    private Double calculateEarnedEth(Integer delivery_time_seconds) {
+    protected Double calculateEarnedEth(Integer delivery_time_seconds) {
         float plnPerHour = 19.7f;
         int ethPriceInUsd = 1300;
         double usdPerSecond = plnPerHour/4.5 / 3600;

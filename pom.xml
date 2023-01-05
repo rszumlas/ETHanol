@@ -18,7 +18,7 @@
     <module>clients</module>
     <module>parcel-done</module>
     <module>eureka-server</module>
-      <module>apigw</module>
+    <module>apigw</module>
   </modules>
 
   <name>ethanol</name>

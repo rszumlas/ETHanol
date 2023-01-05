@@ -16,7 +16,7 @@ class AccountRepositoryTest {
 
     @Autowired
     private AccountRepository underTest;
-    public static final Logger LOGGER = LoggerFactory.getLogger(AccountService.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(AccountRepositoryTest.class);
 
     @Test
     void itShouldInsertAccount() {
@@ -44,9 +44,8 @@ class AccountRepositoryTest {
     @Test
     void itShouldUpdateEthTotal() {
         // Given
-        Long account_id = 1L;
         Account account = new Account(
-                account_id,
+                1L,
                 "Gh23r1hr217@gmail.com",
                 "Gh23r1hr217",
                 0.0
@@ -58,12 +57,13 @@ class AccountRepositoryTest {
         underTest.updateEthTotal(account.getId(), eth_earned);
 
         // Then
-        Optional<Account> accountFound = underTest.findByEmail(account.getEmail());
+        Optional<Account> accountFound = underTest.findById(account.getId());
 
         assertThat(accountFound)
                 .isPresent()
                 .hasValueSatisfying(a -> {
-                    assertThat(a.getEth_total()).isEqualTo(account.getEth_total() + eth_earned);
+                    assertThat(a.getEth_total())
+                            .isEqualTo(account.getEth_total() + eth_earned);
                 });
     }
 
