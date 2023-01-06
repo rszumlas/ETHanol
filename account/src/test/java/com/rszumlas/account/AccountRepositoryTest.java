@@ -86,7 +86,7 @@ class AccountRepositoryTest {
     }
 
     @Test
-    void itShouldCheckDoesEmailAndPasswordExist() {
+    void itShouldCheckIfEmailAndPasswordExist() {
         // Given
         Account account = new Account(
                 1L,
