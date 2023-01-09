@@ -15,6 +15,11 @@ public class ParcelController {
 
     private final ParcelService parcelService;
 
+    @PostMapping
+    public void insertParcel(@RequestBody ParcelRequest parcelRequest) {
+        parcelService.insertParcel(parcelRequest);
+    }
+
     @GetMapping(path = "{parcel_id}")
     public ParcelRequest findParcelById(@PathVariable("parcel_id") Long parcel_id) {
         Parcel parcel = parcelService.findParcelById(parcel_id);
@@ -24,10 +29,6 @@ public class ParcelController {
                 parcel.getVodka().getId(),
                 parcel.getCreated_at()
         );
-    }
-    @PostMapping
-    public void insertParcel(@RequestBody ParcelRequest parcelRequest) {
-        parcelService.insertParcel(parcelRequest);
     }
 
 }

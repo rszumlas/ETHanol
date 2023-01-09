@@ -13,10 +13,6 @@ public class ParcelService {
     private final ParcelRepository parcelRepository;
     private final ParcelProducer parcelProducer;
 
-    public Parcel findParcelById(Long parcel_id) {
-        return parcelRepository.findById(parcel_id).orElseThrow();
-    }
-
     public void insertParcel(ParcelRequest parcelRequest) {
         Parcel parcel = new Parcel(
                 null,
@@ -27,6 +23,10 @@ public class ParcelService {
         );
         parcelRepository.saveAndFlush(parcel);
         parcelProducer.sendMessage(parcel);
+    }
+
+    public Parcel findParcelById(Long parcel_id) {
+        return parcelRepository.findById(parcel_id).orElseThrow();
     }
 
 }
