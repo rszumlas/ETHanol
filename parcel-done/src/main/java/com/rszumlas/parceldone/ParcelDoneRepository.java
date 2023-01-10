@@ -17,7 +17,7 @@ public interface ParcelDoneRepository extends CrudRepository<ParcelDone, Long> {
             "VALUES (:#{#pd.parcel_id}, :#{#pd.account_id}, :#{#pd.delivery_time_seconds}, :#{#pd.is_finished})",
             nativeQuery = true
     )
-    void insertParcelDone(@Param("pd") ParcelDoneRequest pd);
+    void saveParcelDone(@Param("pd") ParcelDoneRequest pd);
 
     @Query(value = "" +
             "SELECT pd.is_finished " +

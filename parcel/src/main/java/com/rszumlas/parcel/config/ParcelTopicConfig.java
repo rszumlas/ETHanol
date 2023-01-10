@@ -9,7 +9,7 @@ import org.springframework.kafka.config.TopicBuilder;
 @Configuration
 public class ParcelTopicConfig {
 
-    @Value("${spring.kafka.topic.name}")
+    @Value("parcel_topic")
     private String topicName;
 
     @Bean

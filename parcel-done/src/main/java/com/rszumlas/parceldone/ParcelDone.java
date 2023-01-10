@@ -2,16 +2,14 @@ package com.rszumlas.parceldone;
 
 import com.rszumlas.account.Account;
 import com.rszumlas.parcel.Parcel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "ParcelDone")
 @Table(name = "parcel_done")
 public class ParcelDone {

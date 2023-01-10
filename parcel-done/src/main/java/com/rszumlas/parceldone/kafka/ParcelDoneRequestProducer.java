@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class ParcelDoneProducer {
+public class ParcelDoneRequestProducer {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(ParcelDoneProducer.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(ParcelDoneRequestProducer.class);
     private final KafkaTemplate<String, ParcelDoneRequest> kafkaTemplate;
 
     public void sendMessage(ParcelDoneRequest event) {

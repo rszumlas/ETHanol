@@ -55,4 +55,7 @@ public class Parcel {
     )
     private LocalDateTime created_at;
 
+    public Parcel(Long id) {
+        this.id = id;
+    }
 }

@@ -51,4 +51,7 @@ public class Account {
     )
     private Double eth_total;
 
+    public Account(Long id) {
+        this.id = id;
+    }
 }

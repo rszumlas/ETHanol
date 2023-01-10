@@ -16,11 +16,11 @@ public class ParcelDoneController {
     private final ParcelDoneService parcelDoneService;
 
     @PostMapping
-    public void insertParcelDone(@RequestBody ParcelDoneRequest parcelDoneRequest) {
-        parcelDoneService.insertParcelDone(parcelDoneRequest);
+    public void saveParcelDone(@RequestBody ParcelDoneRequest parcelDoneRequest) {
+        parcelDoneService.saveParcelDone(parcelDoneRequest);
     }
 
-    @GetMapping(path = "api/v1/parcel-done/{parcel_id}")
+    @GetMapping(path = "/{parcel_id}")
     public Boolean checkIfFinished(@PathVariable("parcel_id") Long parcel_id) {
         return parcelDoneService.checkIfFinished(parcel_id);
     }
